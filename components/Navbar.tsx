@@ -1,11 +1,11 @@
-"user client";
+"use client";
 
-import Image from "next/image";
 import Link from "next/link";
+import Image from "next/image";
 import { useSession } from "next-auth/react";
 import { logout } from "@/lib/auth";
 
-function Navbar() {
+export default function Navbar() {
   const { data: session } = useSession();
   return (
     <nav className="bg-white shadow-sm">
@@ -33,7 +33,6 @@ function Navbar() {
             >
               Browse Jobs
             </Link>
-
             {session ? (
               <>
                 <Link
@@ -56,14 +55,12 @@ function Navbar() {
                 </button>
               </>
             ) : (
-              <>
-                <Link
-                  href="/auth/signin"
-                  className="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
-                >
-                  Sign In
-                </Link>
-              </>
+              <Link
+                href="/auth/signin"
+                className="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
+              >
+                Sign In
+              </Link>
             )}
           </div>
         </div>
@@ -71,5 +68,3 @@ function Navbar() {
     </nav>
   );
 }
-
-export default Navbar;
